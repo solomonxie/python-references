@@ -12,3 +12,7 @@ A comprehensive collection of Python learning materials covering architectural d
   - Implementation of 26 fundamental and advanced data structures, including AVL trees, graphs, and Python collections.
 - [Algorithms](./algorithms/README.md)
   - Essential algorithms and coding patterns including sorting, searching, graph traversal, and LeetCode patterns.
+- [Dataclass](./dataclass/README.md)
+  - A progressive, step-by-step walkthrough of Python's `@dataclass`, from basic fields to slots.
+- [Dataframe](./dataframe/README.md)
+  - A progressive, step-by-step walkthrough of pandas `DataFrame`, from creation to CSV I/O.
