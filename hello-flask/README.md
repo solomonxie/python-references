@@ -1,10 +1,11 @@
 # Flask POC
 
-Minimal Flask examples, mirroring `fastapi_poc/` for comparison.
+Minimal Flask examples, mirroring `hello-fastapi/` for comparison.
 
 ```sh
+cd hello-flask
 pip install flask
-flask --app flask_poc.01_helloworld run
+flask --app 01_helloworld run
 curl http://127.0.0.1:5000
 ```
 

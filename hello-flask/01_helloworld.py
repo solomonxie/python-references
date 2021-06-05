@@ -1,4 +1,4 @@
-# $ flask --app flask_poc.01_helloworld run
+# $ flask --app 01_helloworld run
 # $ curl http://127.0.0.1:5000
 
 from flask import Flask
