@@ -1,0 +1,208 @@
+Resources:
+  ApiCorsLambdaServiceRole0DB39061:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/ApiCorsLambda/ServiceRole/Resource
+  ApiCorsLambda5083F55F:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParameterse226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97S3BucketA37DDEE2
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameterse226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97S3VersionKey6EC140A8
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameterse226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97S3VersionKey6EC140A8
+      Role:
+        Fn::GetAtt:
+          - ApiCorsLambdaServiceRole0DB39061
+          - Arn
+      Handler: lambda-handler.handler
+      Runtime: python3.7
+    DependsOn:
+      - ApiCorsLambdaServiceRole0DB39061
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/ApiCorsLambda/Resource
+      aws:asset:path: asset.e226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97
+      aws:asset:original-path: /Users/xiaoboxie/workspace/repos/aws-cdk-demo/lambda
+      aws:asset:is-bundled: false
+      aws:asset:property: Code
+  HelloHttpApiACDFC6E2:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: HelloHttpApi
+      ProtocolType: HTTP
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/HelloHttpApi/Resource
+  HelloHttpApiDefaultStageACE56ED2:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId:
+        Ref: HelloHttpApiACDFC6E2
+      StageName: $default
+      AutoDeploy: true
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/HelloHttpApi/DefaultStage/Resource
+  HelloHttpApiGEThelloHelloHttpApiStackHelloHttpApiGEThelloC9127D1FPermissionEC329429:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName:
+        Fn::GetAtt:
+          - ApiCorsLambda5083F55F
+          - Arn
+      Principal: apigateway.amazonaws.com
+      SourceArn:
+        Fn::Join:
+          - ""
+          - - "arn:"
+            - Ref: AWS::Partition
+            - ":execute-api:"
+            - Ref: AWS::Region
+            - ":"
+            - Ref: AWS::AccountId
+            - ":"
+            - Ref: HelloHttpApiACDFC6E2
+            - /*/*/hello
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/HelloHttpApi/GET--hello/HelloHttpApiStackHelloHttpApiGEThelloC9127D1F-Permission
+  HelloHttpApiGEThelloHttpIntegration82fe2bcff7bdf3ec1152383e148c1dceAAEA914D:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId:
+        Ref: HelloHttpApiACDFC6E2
+      IntegrationType: AWS_PROXY
+      IntegrationUri:
+        Fn::GetAtt:
+          - ApiCorsLambda5083F55F
+          - Arn
+      PayloadFormatVersion: "2.0"
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/HelloHttpApi/GET--hello/HttpIntegration-82fe2bcff7bdf3ec1152383e148c1dce/Resource
+  HelloHttpApiGEThelloB27F0CB3:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId:
+        Ref: HelloHttpApiACDFC6E2
+      RouteKey: GET /hello
+      AuthorizationType: NONE
+      Target:
+        Fn::Join:
+          - ""
+          - - integrations/
+            - Ref: HelloHttpApiGEThelloHttpIntegration82fe2bcff7bdf3ec1152383e148c1dceAAEA914D
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/HelloHttpApi/GET--hello/Resource
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Analytics: v2:deflate64:H4sIAAAAAAAA/12OwWrDMBBEvyV3eVPHhV6bBEJ7M+4XbOWtqzqSjHbVEIT/vV6bQulp3iyzw9RQN4/wsHvGG1e2H/fFxkRQ3gTtaI7MJAsOLgzmHANLylbM+SO0mNCTUFLTEcecLCkvqd6Ji2E2Wlmu6N97hHLJwepZM3+5peQd8/rg0EPp4nUtUp0NNxXqCIZ1y+LhlO1IckImg5MbUOiG9+8DlBeR6Tg5fVZRq9vXtg301MUsG70GoSHh75J/ds3N82zau3zGsG/gCerD7oudq1IO4jxBt+kP5QC3EkUBAAA=
+    Metadata:
+      aws:cdk:path: HelloHttpApiStack/CDKMetadata/Default
+    Condition: CDKMetadataAvailable
+Parameters:
+  AssetParameterse226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97S3BucketA37DDEE2:
+    Type: String
+    Description: S3 bucket for asset "e226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97"
+  AssetParameterse226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97S3VersionKey6EC140A8:
+    Type: String
+    Description: S3 key for asset version "e226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97"
+  AssetParameterse226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97ArtifactHashB08D4424:
+    Type: String
+    Description: Artifact hash for asset "e226f27e8afe6b0216127b8c316e40bdd32c2fd4cc6caff6a5ef62a2dc742b97"
+Conditions:
+  CDKMetadataAvailable:
+    Fn::Or:
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - af-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-northeast-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-northeast-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-southeast-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-southeast-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ca-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - cn-north-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - cn-northwest-1
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-north-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-3
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - me-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - sa-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-east-2
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-west-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-west-2
+
