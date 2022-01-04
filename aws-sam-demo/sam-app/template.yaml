@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-app
+
+  Sample SAM Template for sam-app
+
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: python3.8
+    Architectures:
+      - arm64
+
+Resources:
+  HelloWorldApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: dev
+      RouteSettings:
+        "GET /hello":
+          ThrottlingBurstLimit: 60
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Events:
+        HelloWorld:
+          Type: HttpApi
+          Properties:
+            Path: /hello
+            Method: get
+            ApiId: !Ref HelloWorldApi
+
+Outputs:
+  HelloWorldFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt HelloWorldFunction.Arn
+  HttpApiId:
+    Description: Api id of HttpApi
+    Value:
+      Ref: HelloWorldApi
+  HelloWorldApi:
+    Description: "API Gateway endpoint URL for Dev stage for Hello World function"
+    Value: !Sub "https://${HelloWorldApi}.execute-api.${AWS::Region}.amazonaws.com/dev/hello"
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt HelloWorldFunctionRole.Arn
