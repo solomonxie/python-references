@@ -12,8 +12,8 @@ wheels") of things a 3rd party package would normally provide.
 - `hello-flask/` — Flask, for comparison against the FastAPI examples
 - `hello-rabbitmq/` — RabbitMQ producer/consumer basics, plus a small reusable task-queue helper
 - `hello-opentelemetry/` — Tracing/metrics instrumentation on a Flask app
-- `cdk-aws-poc/` — Minimal AWS CDK stack (Lambda behind an HTTP API)
-- `sam-aws-poc/` — Same idea via AWS SAM
+- `hello-cdk-aws/` — Minimal AWS CDK stack (Lambda behind an HTTP API)
+- `hello-sam-aws/` — Same idea via AWS SAM
 
 Each subfolder has its own README with setup/run instructions where that's
 non-obvious from the code.
