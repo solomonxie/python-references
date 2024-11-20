@@ -1,4 +1,4 @@
-# $ uvicorn fastapi_poc.01_helloworld:app --reload
+# $ uvicorn 01_helloworld:app --reload
 # $ curl http://127.0.0.1:8000/items/5?q=somequery
 # $ open http://127.0.0.1:8000/docs
 

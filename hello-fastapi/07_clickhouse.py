@@ -1,4 +1,4 @@
-# $ uvicorn fastapi_poc.07_clickhouse:app --reload
+# $ uvicorn 07_clickhouse:app --reload
 # $ curl http://127.0.0.1:8000/
 # $ curl 'http://127.0.0.1:8000/report?start_date=2024-01-01&end_date=2024-01-10&countries=US'
 # $ open http://127.0.0.1:8000/docs

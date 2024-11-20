@@ -1,5 +1,5 @@
 # REF: https://fastapi.tiangolo.com/tutorial/middleware/
-# $ uvicorn fastapi_poc.04_middlewares:app --reload
+# $ uvicorn 04_middlewares:app --reload
 
 from typing import Union
 from time import sleep, time

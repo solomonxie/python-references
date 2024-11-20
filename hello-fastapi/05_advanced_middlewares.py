@@ -1,5 +1,5 @@
 # REF: https://www.starlette.io/middleware/
-# $ uvicorn fastapi_poc.05_advanced_middlewares:app --reload
+# $ uvicorn 05_advanced_middlewares:app --reload
 # $ curl http://127.0.0.1:8000
 
 from typing import Union

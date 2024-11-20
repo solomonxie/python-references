@@ -1,4 +1,4 @@
-# $ uvicorn fastapi_poc.02_io_models:app --reload
+# $ uvicorn 02_io_models:app --reload
 # $ curl http://127.0.0.1:8000/items/5?q=somequery
 # $ curl -H 'Content-type: application/json' -X PUT http://127.0.0.1:8000/items/5 -d '{"name": "string", "price": 0, "is_offer": true}'
 

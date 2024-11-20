@@ -2,11 +2,12 @@
 
 Small, standalone FastAPI examples, roughly ordered from basics to more
 realistic setups. Each file has its `uvicorn`/`curl` commands as a comment
-at the top — run it straight from the repo root, e.g.:
+at the top — cd into this folder and run it, e.g.:
 
 ```sh
+cd hello-fastapi
 pip install -r requirements.txt
-uvicorn fastapi_poc.01_helloworld:app --reload
+uvicorn 01_helloworld:app --reload
 curl http://127.0.0.1:8000/items/5?q=somequery
 open http://127.0.0.1:8000/docs   # interactive Swagger UI
 ```
