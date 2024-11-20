@@ -1,5 +1,5 @@
 # REF: https://www.starlette.io/authentication/
-# $ uvicorn fastapi_poc.06_auth:app --reload
+# $ uvicorn 06_auth:app --reload
 # $ curl http://127.0.0.1:8000
 
 from typing import Union

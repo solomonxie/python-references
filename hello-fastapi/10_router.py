@@ -1,5 +1,5 @@
 # FLAKE8: NOQA
-# $ uvicorn fastapi_poc.10_router:app --reload
+# $ uvicorn 10_router:app --reload
 # $ curl http://127.0.0.1:8000/items/5?q=somequery
 # $ open http://127.0.0.1:8000/docs
 
