@@ -25,6 +25,8 @@ open http://127.0.0.1:8000/docs   # interactive Swagger UI
 | `09_demo.py` | Combining Mongo (metadata) + ClickHouse (metrics) behind one endpoint |
 | `10_router.py` | Splitting routes across an `APIRouter` |
 | `11_swagger_ui.py` | Shaping the auto-generated Swagger UI/ReDoc docs: app metadata, tags, summaries, `response_model`, `deprecated` |
+| `12_advanced_swagger.py` | Disabling the built-in docs to serve a custom Swagger UI, and documenting multiple response codes (with examples) per route |
+| `13_query_list_middleware.py` | Middleware that rewrites `?x=a,b` into `?x=a&x=b` before routing |
 
 `07`–`09` expect a ClickHouse/MongoDB instance reachable at `localhost` (see
 `CH_PASS`/`MG_PASS` env vars in each file) — they're meant to be read as
