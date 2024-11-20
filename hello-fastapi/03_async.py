@@ -1,4 +1,4 @@
-# $ uvicorn fastapi_poc.03_async:app --reload
+# $ uvicorn 03_async:app --reload
 # $ curl http://127.0.0.1:8000
 
 from typing import Union

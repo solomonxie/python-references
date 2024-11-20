@@ -1,5 +1,5 @@
 # FLAKE8: NOQA
-# $ uvicorn fastapi_poc.09_demo:app --reload
+# $ uvicorn 09_demo:app --reload
 # $ curl 'http://127.0.0.1:8000/products?ids=1,2,3'
 # $ open http://127.0.0.1:8000/docs
 """
