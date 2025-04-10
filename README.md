@@ -10,7 +10,7 @@ wheels") of things a 3rd party package would normally provide.
 - `reinvent_wheels/` — Minimal-dependency reimplementations: thread pool, retry decorator, DB connectors, case-insensitive dict, etc.
 - `hello-fastapi/` — FastAPI examples: routing, middleware, auth, and querying Mongo/ClickHouse
 - `hello-flask/` — Flask, for comparison against the FastAPI examples
-- `rabbitmq_poc/` — RabbitMQ producer/consumer basics, plus a small reusable task-queue helper
+- `hello-rabbitmq/` — RabbitMQ producer/consumer basics, plus a small reusable task-queue helper
 - `hello-opentelemetry/` — Tracing/metrics instrumentation on a Flask app
 - `cdk-aws-poc/` — Minimal AWS CDK stack (Lambda behind an HTTP API)
 - `sam-aws-poc/` — Same idea via AWS SAM
