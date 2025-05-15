@@ -1,0 +1,12 @@
+-r requirements.txt
+
+# TEST RELATED ==>
+pytest
+pytest-cov
+pytest-flake8
+flake8
+pook
+moto
+pudb
+ipdb
+ipython

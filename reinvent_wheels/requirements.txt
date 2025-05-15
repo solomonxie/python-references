@@ -1,0 +1,35 @@
+# DB RELATED ==>
+SQLAlchemy
+aws-psycopg2
+snowflake-sqlalchemy
+snowflake-connector-python
+
+
+# NETWORK COMM ==>
+requests
+
+
+# AWS ==>
+awscli
+boto3
+requests-aws4auth
+
+
+# GOOGLE CLOUD ==>
+# ==REF: https://cloud.google.com/python/docs/reference
+oauth2client
+google-api-python-client
+google-cloud-storage
+google-cloud-functions
+google-cloud-api-gateway
+
+
+# MISC ==>
+PyYAML
+swagger-spec-validator>=2.0.2
+cryptography
+
+
+# Calculation
+pandas
+numpy
