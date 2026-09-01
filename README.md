@@ -8,6 +8,8 @@ wheels") of things a 3rd party package would normally provide.
 
 - `learn/` — Algorithms, data structures, design patterns, and language features, one focused script each
 - `reinvent_wheels/` — Minimal-dependency reimplementations: thread pool, retry decorator, DB connectors, case-insensitive dict, etc.
+- `rate-limit/` — Redis-backed rate limiting: rolling windows, weighted/tiered quotas, blacklist escalation
+- `authentication/` — Bearer token, session/cookie, JWT, magic-link, and IP-whitelist auth, composed into one chain
 - `hello-fastapi/` — FastAPI examples: routing, middleware, auth, and querying Mongo/ClickHouse
 - `hello-flask/` — Flask, for comparison against the FastAPI examples
 - `hello-rabbitmq/` — RabbitMQ producer/consumer basics, plus a small reusable task-queue helper
